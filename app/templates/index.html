@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        float: left;
+        width: 79%;
+        height: 100%;
+      }
+      .select {
+        float: left;
+        width: 20%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="select">
+      <div>
+       Select a keyword
+
+       
+       <div>
+          <select class="keywords">
+            <option disabled selected value> -- select an option -- </option>
+            <option data-id="love" value="love">love</option>
+            <option data-id="tata" value="tata">tata</option>
+            <option data-id="java" value="java">java</option>
+            <option data-id="worlds" value="worlds">worlds</option>
+            <option data-id="ruby" value="ruby">ruby</option>
+            <option data-id="columbia" value="columbia">columbia</option>
+            <option data-id="food" value="food">food</option>
+            <option data-id="diwali" value="diwali">diwali</option>
+            <option data-id="movie" value="movie">movie</option>
+            <option data-id="music" value="music">music</option>
+
+          </select>
+        </div>
+      </div>
+
+
+
+    </div>
+    <div id="map"></div>
+    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script type="text/javascript" src = "{{ url_for('static', filename='index.js') }}"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ778Dk340Eq4_g-JFpjL5SOStBTSYx8M&callback=initMap"
+    async defer></script>
+  </body>
+</html>
