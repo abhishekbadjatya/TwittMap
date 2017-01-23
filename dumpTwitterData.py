@@ -19,20 +19,14 @@ twitterauth = Twython(app_key=TWITTER_APP_KEY,
             oauth_token_secret=TWITTER_ACCESS_TOKEN_SECRET)
 
 try:
-    print "A"
     es.indices.create(index='twitter', ignore=400)
-    print "A1"
     mapping = {"twitter": { "properties": { "geo": {"properties": { "coordinates": { "type": "geo_point" }, "type": {"type": "string"}}}}}}
     #mapping = {"twitter": { "properties": { "coordinates.coordinates": { "type": "geo_point" }, "type": {"type": "string"}}}}
-    print "A2"
     es.indices.put_mapping(index='twitter',doc_type='twitter',body=mapping)
-    print "B"
 except Exception, e:
-    print "C"
     pass
 
 def pull_tweets(keyword):
-    print "D"
     search = twitterauth.search(q=keyword,count=100)
     tweets = []
     tweets = search['statuses']
@@ -46,9 +40,6 @@ def pull_tweets(keyword):
                 'geo': tweet['geo']['coordinates'],
                 'time': datetime.now()
             }'''
-            #print tweet
-            print tweet['text']
-            print tweet['geo']
             if tweet['geo']['coordinates'][1]<=-85 or tweet['geo']['coordinates'][1]>=85:
                 continue
 
